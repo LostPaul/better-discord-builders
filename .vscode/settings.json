@@ -1,0 +1,13 @@
+{
+    "eslint.alwaysShowStatus": false,
+    "eslint.options": {
+        "overrideConfigFile": "../.eslintrc.json"
+    },
+    "eslint.workingDirectories": [
+        {
+            "directory": "./src",
+            "changeProcessCWD": true
+        }
+    ],
+    "eslint.rules.customizations": [],
+}
