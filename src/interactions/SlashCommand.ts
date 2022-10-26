@@ -48,7 +48,7 @@ export class SlashCommandOptionBuilder {
         value: string | number;
     }[];
     public options?: SlashCommandOptionBuilder[];
-    public channel_types?: ChannelType[];
+    public channel_types?: (0 | 1 | 2 | 3 | 4 | 5 | 10 | 11 | 12 | 13 | 14 | 15)[];
     public min_value?: number;
     public max_value?: number;
     public min_length?: number;
@@ -70,8 +70,8 @@ export class SlashCommandOptionBuilder {
     }
 }
 export enum OptionType {
-    SubCommand = 1,
-    SubCommandGroup = 2,
+    Subcommand = 1,
+    SubcommandGroup = 2,
     String = 3,
     Integer = 4,
     Boolean = 5,
@@ -112,3 +112,4 @@ export type allowedLocales = 'da' |
     'ja' |
     'zh-TW' |
     'ko';
+export { ChannelType };

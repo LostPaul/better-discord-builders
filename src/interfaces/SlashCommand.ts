@@ -1,4 +1,4 @@
-import { allowedLocales, SlashCommandOptionBuilder, OptionType } from '../interactions/SlashCommand';
+import { allowedLocales, SlashCommandOptionBuilder } from '../interactions/SlashCommand';
 import { PermissionFlagsBits, ChannelType } from "discord-api-types/v10";
 export interface SlashCommand {
     name: string;
@@ -33,7 +33,7 @@ export interface SlashCommandOption {
         value: string | number;
     }[];
     options?: SlashCommandOptionBuilder[];
-    channel_types?: ChannelType[];
+    channel_types?: (0 | 1 | 2 | 3 | 4 | 5 | 10 | 11 | 12 | 13 | 14 | 15)[];
     min_value?: number;
     max_value?: number;
     min_length?: number;
