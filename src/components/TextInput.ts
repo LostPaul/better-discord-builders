@@ -1,9 +1,9 @@
 import { ComponentType, TextInputStyle } from 'discord-api-types/v10';
-import { TextInput, StringTextInputStyle } from '../interfaces/TextInput';
+import { TextInput } from '../interfaces/TextInput';
 export class TextInputBuilder {
     public type = ComponentType.TextInput;
     public custom_id: string;
-    public style: 1 | 2 | 'paragraph' | 'short';
+    public style: 1 | 2;
     public label: string;
     public min_length?: number;
     public max_length?: number;
@@ -12,7 +12,7 @@ export class TextInputBuilder {
     public required?: boolean;
     constructor(data: TextInput) {
         this.custom_id = data.custom_id;
-        this.style = (typeof data.style === 'string' ? StringTextInputStyle[data.style.toLowerCase() as unknown as StringTextInputStyle] : data.style) as unknown as 1 | 2 | 'paragraph' | 'short';
+        this.style = data.style;
         this.label = data.label;
         this.min_length = data.min_length;
         this.max_length = data.max_length;
@@ -21,3 +21,4 @@ export class TextInputBuilder {
         this.required = data.required;
     }
 }
+export { TextInputStyle };

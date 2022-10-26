@@ -1,9 +1,9 @@
-import { StringButtonStyle, Button } from '../interfaces/Button';
+import { Button } from '../interfaces/Button';
 import { ComponentType, ButtonStyle } from 'discord-api-types/v10';
 import { getEmojis } from '../utils/getEmojis';
 export class ButtonBuilder {
     public type: ComponentType.Button;
-    public style: ButtonStyle | StringButtonStyle | string;
+    public style: ButtonStyle;
     public label?: string;
     public emoji: {
         name: string;
@@ -28,9 +28,10 @@ export class ButtonBuilder {
         } else {
             this.emoji = data.emoji ?? undefined;
         }
-        this.style = typeof data.style === 'string' ? StringButtonStyle[data.style.toLowerCase() as unknown as StringButtonStyle] : data.style;
+        this.style = data.style;
         this.custom_id = data.custom_id;
         this.url = data.url;
         this.disabled = data.disabled;
     }
 }
+export { ButtonStyle };

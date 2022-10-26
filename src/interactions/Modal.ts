@@ -1,4 +1,4 @@
-import { TextInputBuilder } from "../components/TextInput";
+import { TextInputBuilder, TextInputStyle } from "../components/TextInput";
 import { Modal } from "../interfaces/Modal";
 import { ActionRowBuilder } from "../components/ActionRow";
 export class ModalBuilder {
@@ -8,7 +8,7 @@ export class ModalBuilder {
     constructor(data: Modal) {
         this.title = data.title;
         this.custom_id = data.custom_id;
-        this.components = [new ActionRowBuilder(data.components ?? [new TextInputBuilder({ custom_id: "test", label: "test", style: 1 })]) ?? [new ActionRowBuilder([new TextInputBuilder({ custom_id: "test", label: "test", style: 1 })])]];
+        this.components = [new ActionRowBuilder(data.components as TextInputBuilder[])];
     }
 }
-export { TextInputBuilder };
+export { TextInputBuilder, TextInputStyle };

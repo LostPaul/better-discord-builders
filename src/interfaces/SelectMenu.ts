@@ -5,16 +5,9 @@ export enum SelectMenuStyle {
     mentionable = 7,
     channels = 8,
 }
-export enum StringSelectMenuStyle {
-    'text' = 3,
-    'user' = 5,
-    'role' = 6,
-    'mentionable' = 7,
-    'channels' = 8,
-}
 export interface SelectMenu {
     // make it that you have to use the enum
-    type: 3 | 5 | 6 | 7 | 8 | 'text' | 'user' | 'role' | 'mentionable' | 'channels';
+    type: 3 | 5 | 6 | 7 | 8;
     custom_id: string;
     options: SelectMenuOptions[];
     placeholder?: string;

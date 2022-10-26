@@ -1,5 +1,4 @@
 import { ComponentType } from 'discord-api-types/v10';
-import { StringButtonStyle } from '../interfaces/Button';
 import { ButtonBuilder } from './Button';
 import { SelectMenuBuilder } from './SelectMenu';
 import { TextInputBuilder } from './TextInput';
@@ -10,4 +9,4 @@ export class ActionRowBuilder {
         this.components = components;
     }
 }
-export { ButtonBuilder, SelectMenuBuilder, StringButtonStyle };
+export { ButtonBuilder, SelectMenuBuilder, TextInputBuilder };

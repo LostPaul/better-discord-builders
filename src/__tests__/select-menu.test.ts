@@ -1,10 +1,9 @@
-import { SelectMenuBuilder, StringSelectMenuStyle } from "../components/SelectMenu";
+import { SelectMenuBuilder, SelectMenuStyle } from "../components/SelectMenu";
 test('SelectMenuBuilder', () => {
     const selectMenu = new SelectMenuBuilder({
-        type: 'user',
+        type: SelectMenuStyle.user,
         custom_id: 'test',
         options: [],
     });
     expect(selectMenu).toBeDefined();
-    console.log(selectMenu.type);
 })
