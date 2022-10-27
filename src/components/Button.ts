@@ -1,7 +1,9 @@
 import { Button } from '../interfaces/Button';
 import { ComponentType, ButtonStyle } from 'discord-api-types/v10';
 import { getEmojis } from '../utils/getEmojis';
-export class ButtonBuilder {
+import { Emoji } from 'discord.js';
+import { ButtonBuilder as DjsButtonBuilder } from 'discord.js';
+export class ButtonBuilder extends DjsButtonBuilder {
     public type: ComponentType.Button;
     public style: ButtonStyle;
     public label?: string;
@@ -9,11 +11,12 @@ export class ButtonBuilder {
         name: string;
         id: string;
         animated?: boolean;
-    } | string | undefined;
+    } | string | undefined | Emoji;
     public custom_id: string;
     public url?: string;
     public disabled?: boolean;
     constructor(data: Button) {
+        super();
         this.type = ComponentType.Button;
         this.label = data.label;
         if (typeof data.emoji === 'string') {
@@ -25,7 +28,7 @@ export class ButtonBuilder {
                     animated: emoji.animated
                 };
             }
-        } else {
+        } else if (data.emoji) {
             this.emoji = data.emoji ?? undefined;
         }
         this.style = data.style;

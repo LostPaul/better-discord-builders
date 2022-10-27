@@ -1,3 +1,4 @@
+import { SelectMenuOptionBuilder } from 'discord.js';
 export enum SelectMenuStyle {
     text = 3,
     user = 5,
@@ -15,7 +16,7 @@ export interface SelectMenu {
     max_values?: number;
     disabled?: boolean;
 }
-export interface SelectMenuOptions {
+export interface SelectMenuOptions extends SelectMenuOptionBuilder {
     label: string;
     value: string;
     description?: string;

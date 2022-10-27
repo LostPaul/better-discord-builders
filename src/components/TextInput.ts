@@ -1,6 +1,7 @@
 import { ComponentType, TextInputStyle } from 'discord-api-types/v10';
 import { TextInput } from '../interfaces/TextInput';
-export class TextInputBuilder {
+import { TextInputBuilder as DjsTextInputBuilder } from 'discord.js';
+export class TextInputBuilder extends DjsTextInputBuilder {
     public type = ComponentType.TextInput;
     public custom_id: string;
     public style: 1 | 2;
@@ -11,6 +12,7 @@ export class TextInputBuilder {
     public value?: string;
     public required?: boolean;
     constructor(data: TextInput) {
+        super();
         this.custom_id = data.custom_id;
         this.style = data.style;
         this.label = data.label;
