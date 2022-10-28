@@ -1,4 +1,4 @@
-import { SelectMenuOptionBuilder } from 'discord.js';
+import { SelectMenuOptionBuilder, Emoji } from 'discord.js';
 export enum SelectMenuStyle {
     text = 3,
     user = 5,
@@ -24,6 +24,6 @@ export interface SelectMenuOptions extends SelectMenuOptionBuilder {
         name: string;
         id: string;
         animated?: boolean;
-    };
+    } | string | undefined | Emoji;
     default?: boolean;
 }

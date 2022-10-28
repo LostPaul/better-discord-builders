@@ -1,17 +1,16 @@
 import { Button } from '../interfaces/Button';
 import { ComponentType, ButtonStyle } from 'discord-api-types/v10';
 import { getEmojis } from '../utils/getEmojis';
-import { Emoji } from 'discord.js';
 import { ButtonBuilder as DjsButtonBuilder } from 'discord.js';
 export class ButtonBuilder extends DjsButtonBuilder {
     public type: ComponentType.Button;
     public style: ButtonStyle;
     public label?: string;
-    public emoji: {
-        name: string;
-        id: string;
-        animated?: boolean;
-    } | string | undefined | Emoji;
+    public emoji?: {
+        name: string | null | undefined;
+        id: string | null | undefined;
+        animated?: boolean | undefined | null;
+    } | string;
     public custom_id: string;
     public url?: string;
     public disabled?: boolean;
@@ -28,8 +27,14 @@ export class ButtonBuilder extends DjsButtonBuilder {
                     animated: emoji.animated
                 };
             }
-        } else if (data.emoji) {
-            this.emoji = data.emoji ?? undefined;
+        } else {
+            this.emoji = {
+                name: data.emoji?.name,
+                id: data.emoji?.id
+            };
+            if (data.emoji?.animated) {
+                this.emoji.animated = data.emoji.animated;
+            }
         }
         this.style = data.style;
         this.custom_id = data.custom_id;
