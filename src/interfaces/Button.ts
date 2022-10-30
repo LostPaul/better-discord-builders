@@ -9,7 +9,7 @@ export interface Button {
         id: string;
         animated?: boolean;
     } | string | undefined | Emoji;
-    custom_id: string;
+    custom_id?: string;
     url?: string;
     disabled?: boolean;
 }

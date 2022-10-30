@@ -1,7 +1,7 @@
 import { Button } from '../interfaces/Button';
 import { ComponentType, ButtonStyle } from 'discord-api-types/v10';
 import { getEmojis } from '../utils/getEmojis';
-import { ButtonBuilder as DjsButtonBuilder } from 'discord.js';
+import { ButtonBuilder as DjsButtonBuilder, APIMessageComponentEmoji } from 'discord.js';
 export class ButtonBuilder extends DjsButtonBuilder {
     public type: ComponentType.Button;
     public style: ButtonStyle;
@@ -11,10 +11,10 @@ export class ButtonBuilder extends DjsButtonBuilder {
         id: string | null | undefined;
         animated?: boolean | undefined | null;
     } | string;
-    public custom_id: string;
+    public custom_id?: string;
     public url?: string;
     public disabled?: boolean;
-    constructor(data: Button) {
+    constructor(data: Button | ButtonBuilder) {
         super();
         this.type = ComponentType.Button;
         this.label = data.label;
@@ -28,18 +28,35 @@ export class ButtonBuilder extends DjsButtonBuilder {
                 };
             }
         } else {
-            this.emoji = {
-                name: data.emoji?.name,
-                id: data.emoji?.id
-            };
-            if (data.emoji?.animated) {
-                this.emoji.animated = data.emoji.animated;
+            if (data.emoji) {
+                this.emoji = {
+                    name: data.emoji?.name,
+                    id: data.emoji?.id
+                };
+                if (data.emoji?.animated) {
+                    this.emoji.animated = data.emoji.animated;
+                }
             }
         }
         this.style = data.style;
-        this.custom_id = data.custom_id;
-        this.url = data.url;
-        this.disabled = data.disabled;
+        if (data.custom_id) {
+            this.custom_id = data.custom_id;
+            (this.data as ButtonBuilder).custom_id = this.custom_id;
+        }
+        if (data.url) {
+            this.url = data.url;
+            (this.data as ButtonBuilder).url = this.url;
+        }
+        if (data.emoji !== undefined) {
+            this.data.emoji = this.emoji as APIMessageComponentEmoji;
+        } else {
+            delete this.data.emoji;
+        }
+        this.disabled = data.disabled ?? false;
+        this.data.type = this.type;
+        this.data.style = this.style;
+        this.data.label = this.label;
+        this.data.disabled = this.disabled;
     }
 }
 export { ButtonStyle };

@@ -2,7 +2,7 @@ export interface Embed {
     title?: string;
     description?: string;
     url?: string;
-    color?: number;
+    color?: string | number;
     timestamp?: string;
     footer?: {
         text: string;
