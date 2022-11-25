@@ -42,6 +42,8 @@ export class ButtonBuilder extends DjsButtonBuilder {
         if (data.custom_id) {
             this.custom_id = data.custom_id;
             (this.data as ButtonBuilder).custom_id = this.custom_id;
+        } else {
+            delete (this.data as ButtonBuilder).custom_id;
         }
         if (data.url) {
             this.url = data.url;

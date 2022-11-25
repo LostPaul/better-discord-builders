@@ -6,6 +6,7 @@ export { SlashCommandBuilder, SlashCommandOptionBuilder, OptionType as SlashComm
 export { SelectMenuOptionBuilder } from './components/SelectMenuOption';
 export { EmbedBuilder } from './messages/Embed';
 export { ActionRowTextInputBuilder } from './components/ActionRowTextInput';
+export { ContextMenuCommandBuilder, ContextMenuType } from './interactions/ContextMenu';
 export * from './interfaces/Button';
 export * from './interfaces/Embed';
 export * from './interfaces/ContextMenu';

@@ -16,3 +16,7 @@ export class ContextMenuCommandBuilder extends DjsContextMenuBuilder {
         }
     }
 }
+export enum ContextMenuType {
+    User = 2,
+    Message = 3
+}

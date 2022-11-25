@@ -1,7 +1,7 @@
 import { SelectMenuOptionBuilder, Emoji, SelectMenuComponentOptionData } from 'discord.js';
 import { SelectMenuOptionBuilder as InternalSelectMenuOptionBuilder } from '../components/SelectMenuOption';
 export enum SelectMenuStyle {
-    Text = 3,
+    String = 3,
     User = 5,
     Role = 6,
     Mentionable = 7,

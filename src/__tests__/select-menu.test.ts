@@ -12,5 +12,6 @@ test('SelectMenuBuilder', () => {
                 value: 'test',
             }],
         })]);
+    console.log((selectMenu as any).components[0].options)
     expect(selectMenu).toBeDefined();
 })

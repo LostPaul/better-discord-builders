@@ -27,15 +27,33 @@ export class SelectMenuOptionBuilder extends DjsSelectMenuOptionBuilder {
                     animated: emoji.animated
                 };
             }
-        } else {
-            this.emoji = {
-                name: data.emoji?.name,
-                id: data.emoji?.id
-            };
-            if (data.emoji?.animated) {
-                this.emoji.animated = data.emoji.animated;
+        } else if (data.emoji) {
+            if (data.emoji.id === null) {
+                delete data.emoji;
+            } else {
+                this.emoji = {
+                    name: data.emoji?.name,
+                    id: data.emoji?.id
+                };
+                if (data.emoji?.animated) {
+                    this.emoji.animated = data.emoji.animated;
+                }
             }
         }
+        if (data.emoji) {
+            this.data.emoji = this.emoji as unknown as undefined;
+        } else {
+            delete this.data.emoji;
+            delete this.emoji;
+        }
+        if (data.description) {
+            this.description = data.description;
+            this.data.description = this.description;
+        } else {
+            delete this.description;
+        }
         this.default = data.default ?? false;
+        this.data.label = this.label;
+        this.data.value = this.value;
     }
 }

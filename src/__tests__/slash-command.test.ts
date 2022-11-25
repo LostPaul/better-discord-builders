@@ -4,12 +4,12 @@ test('SlashCommandBuilder', () => {
         name: 'test',
         description: 'test',
         options: [
-            new SlashCommandOptionBuilder({
+            {
                 name: 'test',
                 description: 'test',
                 type: OptionType.String,
                 required: true,
-            }),
+            },
         ],
     });
     expect(slashCommand).toBeDefined();

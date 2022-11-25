@@ -1,5 +1,6 @@
 import { ButtonBuilder, ButtonStyle } from '../components/Button';
 import { ActionRowBuilder } from '../components/ActionRow';
+import { ButtonInteraction} from 'discord.js'
 test('ButtonBuilder', () => {
     const button = new ActionRowBuilder([
         new ButtonBuilder({
@@ -18,6 +19,11 @@ test('ButtonBuilder', () => {
             url: "https://about.emojiguardian.xyz"
         })
     ])
-    console.log(button.components);
+    const components = [new ActionRowBuilder([new ButtonBuilder({
+        label: "test",
+        custom_id: JSON.stringify(["test", "test"]),
+        style: ButtonStyle.Primary
+      })])]
+      console.log(components)
     expect(button).toBeDefined();
 });

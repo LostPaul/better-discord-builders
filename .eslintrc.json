@@ -15,6 +15,7 @@
         "node": true
     },
     "rules": {
+        "no-unnecessary-callback-wrapper": "off",
         "import/order": [
             "error",
             {

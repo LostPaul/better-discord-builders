@@ -9,7 +9,7 @@ export interface SlashCommand {
     description_localizations?: {
         [key in allowedLocales]?: string;
     };
-    options?: SlashCommandOptionBuilder[];
+    options?: SlashCommandOption[];
     default_member_permissions?: (keyof typeof PermissionFlagsBits)[];
     dm_permission?: boolean;
     guild_id?: string;
@@ -32,7 +32,7 @@ export interface SlashCommandOption {
         };
         value: string | number;
     }[];
-    options?: SlashCommandOptionBuilder[];
+    options?: SlashCommandOption[];
     channel_types?: (0 | 1 | 2 | 3 | 4 | 5 | 10 | 11 | 12 | 13 | 14 | 15)[];
     min_value?: number;
     max_value?: number;
